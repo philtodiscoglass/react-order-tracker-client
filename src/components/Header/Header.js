@@ -1,9 +1,14 @@
 import React, { Fragment } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
+// import Nav from 'react-bootstrap/Nav'
+// import Navbar from 'react-bootstrap/Navbar'
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 
 const authenticatedOptions = (
   <Fragment>
+    <NavDropdown title="Account" id="basic-nav-dropdown">
+      <NavDropdown.Item href="#orders">Orders</NavDropdown.Item>
+      <NavDropdown.Item href="#new-order">New Order</NavDropdown.Item>
+    </NavDropdown>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
   </Fragment>
