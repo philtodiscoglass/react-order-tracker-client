@@ -1,121 +1,62 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
-import { signUp, signIn } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-// class NewOrder extends Component {
-//   constructor () {
-//     super()
-//
-//     this.state = {
-//       title: '',
-//       orderStatus: '',
-//       isPaid: '',
-//       product: '',
-//       price: '',
-//       contact: '',
-//       shippingInfo: '',
-//       refNum: ''
-//     }
-//   }
-//
-//   handleChange = event => this.setState({
-//     [event.target.name]: event.target.value
-//   })
-//
-//   onNewOrder = event => {
-//     event.preventDefault()
-//
-//     const { msgAlert, history, setUser } = this.props
-//
-//     newOrder(this.state)
-//       .then(() => signIn(this.state))
-//       .then(res => setUser(res.data.user))
-//       .then(() => msgAlert({
-//         heading: 'New Order Success',
-//         message: messages.newOrderSuccess,
-//         variant: 'success'
-//       }))
-//       .then(() => history.push('/'))
-//       .catch(error => {
-//         this.setState({ title: '',
-//           orderStatus: '',
-//           isPaid: '',
-//           product: '',
-//           price: '',
-//           contact: '',
-//           shippingInfo: '',
-//           refNum: '' })
-//         msgAlert({
-//           heading: 'New Order Failed ' + error.message,
-//           message: messages.newOrderFailure,
-//           variant: 'danger'
-//         })
-//       })
-//   }
+// import apiUrl from '../../apiConfig'
 
-  const NewOrder = (props) => {
-  const [order, newOrder] = useState({ title: '',
-    orderStatus: '',
-    isPaid: '',
-    product: '',
-    price: '',
-    contact: '',
-    shippingInfo: '',
-    refNum: '' })
-  const { msgAlert } = props
+class NewOrder extends Component {
+  constructor () {
+    super()
 
-  const handleChange = event => {
-    const updatedField = { [event.target.name]: event.target.value }
-    const createdExpense = Object.assign({}, order, updatedField)
-
-    newOrder(newOrder)
+    this.state = {
+      title: '',
+      orderStatus: '',
+      isPaid: '',
+      product: '',
+      price: '',
+      contact: '',
+      shippingInfo: '',
+      refNum: ''
+    }
   }
 
-  const handleSubmit = event => {
+  handleChange = event => this.setState({
+    [event.target.name]: event.target.value
+  })
+
+  onNewOrder = event => {
     event.preventDefault()
-    axios({
-      method: 'POST',
-      url: `${apiUrl}/orders`,
-      headers: {
-        'Authorization': `Bearer ${props.user.token}`
-      },
-      data: {
-        orders: {
-          title: order.title,
-          orderStatus: order.orderStatus,
-          isPaid: order.isPaid,
-          product: order.product,
-          price: order.price,
-          contact: order.contact,
-          shippingInfo: order.shippingInfo,
-          refNum: order.refNum
-        }
-      }
-    })
-      .then(() => msgAlert({
-        heading: 'Success',
-        message: messages.newOrderSuccess,
-        variant: 'success'
-      }))
-      .then(() => props.handleClose())
-      .then(() => newOrder({ title: '',
-        orderStatus: '',
-        isPaid: '',
-        product: '',
-        price: '',
-        contact: '',
-        shippingInfo: '',
-        refNum: '' }))
-      .catch(() => msgAlert({
-        heading: 'Failure',
-        message: messages.newOrderFailure,
-        variant: 'danger'
-      }))
+
+    const { msgAlert, history } = this.props
+
+    // newOrder(this.state)
+    //   .then(() => newOrder(this.state))
+    //   .then(res => setUser(res.data.user))
+    //   .then(() => msgAlert({
+    //     heading: 'New Order Success',
+    //     message: messages.newOrderSuccess,
+    //     variant: 'success'
+    //   }))
+      .then(() => history.push('/'))
+      .catch(error => {
+        this.setState({ title: '',
+          orderStatus: '',
+          isPaid: '',
+          product: '',
+          price: '',
+          contact: '',
+          shippingInfo: '',
+          refNum: '' })
+        msgAlert({
+          heading: 'New Order Failed ' + error.message,
+          message: messages.newOrderFailure,
+          variant: 'danger'
+        })
+      })
   }
 
   render () {
