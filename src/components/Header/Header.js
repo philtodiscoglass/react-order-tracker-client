@@ -6,11 +6,11 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap'
 const authenticatedOptions = (
   <Fragment>
     <NavDropdown title="Account" id="basic-nav-dropdown">
-      <NavDropdown.Item href="#orders">Orders</NavDropdown.Item>
-      <NavDropdown.Item href="#new-order">New Order</NavDropdown.Item>
+      <NavDropdown.Item href="#change-password">Change Password</NavDropdown.Item>
+      <NavDropdown.Item href="#sign-out">Sign Out</NavDropdown.Item>
     </NavDropdown>
-    <Nav.Link href="#change-password">Change Password</Nav.Link>
-    <Nav.Link href="#sign-out">Sign Out</Nav.Link>
+    <Nav.Link href="#orders">Orders</Nav.Link>
+    <Nav.Link href="#new-order">New Order</Nav.Link>
   </Fragment>
 )
 
@@ -23,14 +23,14 @@ const unauthenticatedOptions = (
 
 const alwaysOptions = (
   <Fragment>
-    <Nav.Link to="/">Home</Nav.Link>
+    <Nav.Link to="/"></Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
+  <Navbar bg="dark" variant="dark" expand="md">
     <Navbar.Brand href="#">
-      react-order-tracker-client
+      Order Tracker
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

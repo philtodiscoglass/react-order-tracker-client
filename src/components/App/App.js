@@ -9,6 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import IndexOrders from '../Orders/IndexOrders'
+import NewOrder from '../Orders/NewOrder'
 
 class App extends Component {
   constructor () {
@@ -57,6 +58,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/orders' render={() => (
             <IndexOrders user={user}/>
+          )}/>
+          <AuthenticatedRoute user={user} path='/new-order' render={() => (
+            <NewOrder user={user}/>
           )}/>
         </main>
       </Fragment>
